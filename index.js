@@ -13,17 +13,17 @@ const getBase = async (req, res) => {
         `https://api.exchangeratesapi.io/latest?base=${base}&symbols=${cur.toUpperCase()}`
       );
       const result = data.data;
-      res.json(result);
+      res.json({ results: result });
     } else if (base) {
       data = await axios.get(
         `https://api.exchangeratesapi.io/latest?base=${base}`
       );
       const result = data.data;
-      res.json(result);
+      res.json({ results: result });
     }
     data = await axios.get(`https://api.exchangeratesapi.io/latest`);
     const result = data.data;
-    res.json(result);
+    res.json({ results: result });
   } catch (error) {
     console.log(error);
   }
